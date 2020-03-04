@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="quiz d-flex justify-content-center align-items-center">
+		<div class="card main-card border border-secondary">
+			<!-- card-header -->
+			<div class="card-header" data-header>
+				<h5 class="card-title">Какой язык программирования используется на FrontEnd'е?</h5>
+			</div>
+			<!-- // card-header -->
+
+			<!-- card-body # 1 -->
+			<div class="card-body" data-card="1">
+				<div class="d-flex flex-column justify-content-around h-100">
+					<div>
+						<h4 class="card-title text-center">Пройди опрос о фронтенд разработке</h4>
+						<h4 class="card-title text-center">и получи обучающий материал бесплатно</h4>
+					</div>
+					<img src="assets/js.png" class="js_logo">
+					<button class="btn btn-success btn-lg" style="display: block; margin: 0 auto;">Начать</button>
+				</div>
+			</div>
+			<!-- // card-body # 1 -->
+
+			<!-- card-body # 2 -->
+			<div class="card-body" data-card="2">
+			    <ul class="list-group list-group-flush">
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1" checked>
+			                <label class="form-check-label">Russian language</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">HTML + CSS</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">JavaScript and TypeScript</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">Никакого. На фронтенде пользуются браузером.</label>
+			            </div>
+			        </li>
+			    </ul>
+			</div>
+			<!-- // card-body # 2 -->
+
+			<!-- card-body # 3 -->
+			<div class="card-body" data-card="3">
+				<div class="d-flex flex-wrap justify-content-center">
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/sublime.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">Sublime Text</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/notepad.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">Notepad++</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/vscode.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">VSCode</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/brackets.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">Brackets</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/vim.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">VIM</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/bloknot.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">Блокнот</label>
+				        </div>
+				    </div>
+				    <div class="card-slectable d-flex flex-column justify-content-center">
+				        <img src="assets/atom.png" alt="">
+				        <div class="form-check">
+				            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				            <label class="form-check-label text-center" for="defaultCheck1" style="display: block;">Atom</label>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<!-- // card-body # 3 -->
+
+			<!-- card-body # 4 -->
+			<div class="card-body" data-card="4">
+			    <img src="assets/code.jpg" style="display: block; margin: 0 auto;">
+			    <ul class="list-group list-group-flush">
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1" checked>
+			                <label class="form-check-label">Ничего не выведет</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">Будет ошибка синтаксиса</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">Hello, world!</label>
+			            </div>
+			        </li>
+			        <li class="list-group-item">
+			            <div class="form-check">
+			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <label class="form-check-label">HELLO, WORLD!</label>
+			            </div>
+			        </li>
+			    </ul>
+			</div>
+			<!-- // card-body # 4 -->
+
+			<!-- card-body # 5 -->
+			<div class="card-body" data-card="5">
+			    <div class="form-group">
+			        <label for="formGroupExampleInput">Имя:</label>
+			        <input type="text" class="form-control" placeholder="Владимир">
+			    </div>
+			    <div class="form-group">
+			        <label for="formGroupExampleInput2">Адрес электронной почты:</label>
+			        <input type="text" class="form-control" placeholder="@mail.ru">
+			    </div>
+			    <div class="form-check">
+			        <input class="form-check-input" type="checkbox" name="exampleRadios" value="option1">
+			        <label class="form-check-label">Согласен/согласна на обработку моих персональных данных.</label>
+			    </div>
+			</div>
+			<!-- // card-body # 5 -->
+
+			<!-- card-body # 6 -->
+			<div class="card-body" data-card="6">
+				<div class="d-flex flex-column justify-content-around h-100">
+				    <div>
+				        <h4 class="card-title text-center">Наши поздравления!</h4>
+				        <h4 class="card-title text-center">Вам на почту отправлены доп-материалы</h4>
+				    </div>
+				    <div class="d-flex justify-content-around">
+				        <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+				            <img src="assets/text.svg" style="width: 100px;">
+				            <p>Учебный материал</p>
+				        </div>
+				        <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+				            <img src="assets/youtube.png" style="width: 100px;">
+				            <p>1-й видео урок</p>
+				        </div>
+				        <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+				            <img src="assets/exel.png" style="width: 100px;">
+				            <p>План обучения</p>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<!-- // card-body # 6 -->
+
+
+			<!-- card-footer -->
+			<div class="card-footer" data-footer>
+				<div class="d-flex align-items-center">
+				    <div class="flex-grow-1">
+				        <div class="progress">
+				            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+				                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+				        </div>
+				    </div>
+				    <div class="btn-group">
+				        <button class="btn btn-danger float-right" disabled>Назад</button>
+				        <button class="btn btn-success float-right">Далее</button>
+				    </div>
+				</div>
+			</div>
+			<!-- // card-footer -->
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+	<script src="script.js"></script>
+</body>
+
+</html>
