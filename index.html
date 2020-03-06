@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 	<meta charset="UTF-8">
@@ -27,7 +27,7 @@
 						<h4 class="card-title text-center">и получи обучающий материал бесплатно</h4>
 					</div>
 					<img src="assets/js.png" class="js_logo">
-					<button class="btn btn-success btn-lg" style="display: block; margin: 0 auto;">Начать</button>
+					<button class="btn btn-success btn-lg" style="display: block; margin: 0 auto;" data-start>Начать</button>
 				</div>
 			</div>
 			<!-- // card-body # 1 -->
@@ -37,25 +37,25 @@
 			    <ul class="list-group list-group-flush">
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1" checked>
+			                <input class="form-check-input" type="radio" name="question1" value="Russian language">
 			                <label class="form-check-label">Russian language</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question1" value="HTML + CSS">
 			                <label class="form-check-label">HTML + CSS</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question1" value="JavaScript and TypeScript">
 			                <label class="form-check-label">JavaScript and TypeScript</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question1" value="Никакого. На фронтенде пользуются браузером.">
 			                <label class="form-check-label">Никакого. На фронтенде пользуются браузером.</label>
 			            </div>
 			        </li>
@@ -125,25 +125,25 @@
 			    <ul class="list-group list-group-flush">
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1" checked>
+			                <input class="form-check-input" type="radio" name="question4" value="Ничего не выведет" checked>
 			                <label class="form-check-label">Ничего не выведет</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question4" value="Будет ошибка синтаксиса">
 			                <label class="form-check-label">Будет ошибка синтаксиса</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question4" value="Hello, world!">
 			                <label class="form-check-label">Hello, world!</label>
 			            </div>
 			        </li>
 			        <li class="list-group-item">
 			            <div class="form-check">
-			                <input class="form-check-input" type="radio" name="quastion1" value="option1">
+			                <input class="form-check-input" type="radio" name="question4" value="HELLO, WORLD!">
 			                <label class="form-check-label">HELLO, WORLD!</label>
 			            </div>
 			        </li>
@@ -193,7 +193,6 @@
 			</div>
 			<!-- // card-body # 6 -->
 
-
 			<!-- card-footer -->
 			<div class="card-footer" data-footer>
 				<div class="d-flex align-items-center">
@@ -204,8 +203,8 @@
 				        </div>
 				    </div>
 				    <div class="btn-group">
-				        <button class="btn btn-danger float-right" disabled>Назад</button>
-				        <button class="btn btn-success float-right">Далее</button>
+				        <button class="btn btn-danger float-right" data-back>Назад</button>
+				        <button class="btn btn-success float-right" data-next>Далее</button>
 				    </div>
 				</div>
 			</div>
