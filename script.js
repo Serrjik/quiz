@@ -1,7 +1,7 @@
 // Информация о состоянии приложения.
 const data = {
 	// Номер карточки, которая должна отображаться.
-	currentCardNumber: 1,
+	currentCardNumber: 2,
 	// Ответы пользователя:
 	question2: null,
 	question3: [],
@@ -150,6 +150,8 @@ document
 
 // Функция отображает карточку соответствующую переданному номеру.
 function showCard (n) {
+	updateProgress()
+
 	// Если карточка № 1 или № 6:
 	if (n === 1 || n === 6) {
 		// В этой карточке нужно скрыть шапку и подвал.
@@ -161,7 +163,7 @@ function showCard (n) {
 	else {
 		// Показать шапку и подвал.
 		showFooter()
-		showHeader()
+		showHeader(n)
 	}
 
 	// Скрыть все карточки.
@@ -281,9 +283,30 @@ function hideFooter () {
 	document.querySelector('[data-footer]').style.display = 'none'
 }
 
-// Функция показывает шапку карточки.
-function showHeader () {
-	document.querySelector('[data-header]').style.display = ''
+// Функция показывает шапку карточки. Принимает номер карточки.
+function showHeader (n) {
+	const header = document.querySelector('[data-header]')
+
+	switch (n) {
+		case 2:
+			header.innerHTML = `<h5 class="card-title">Какой язык программирования используется на FrontEnd'е?</h5>`
+			break
+		case 3:
+			header.innerHTML = `<h5 class="card-title">Каким редактором пользуются программисты?</h5>`
+			break
+		case 4:
+			header.innerHTML = `<h5 class="card-title">Что выведет следующий код?</h5>`
+			break
+		case 5:
+			header.innerHTML = `<h5 class="card-title">Контактные данные для предложения на основе ваших ответов.</h5>`
+			break
+		default:
+			header.innerHTML = ''
+			break
+	}
+
+	
+	header.style.display = ''
 }
 
 // Функция скрывает шапку карточки.
@@ -308,4 +331,53 @@ function toggleItem (array, item) {
 		// Добавить его!
 		array.push(item)
 	}
+}
+
+/* 
+	Функция собирает информацию о том, сколько есть ответов на вопросы 
+	и соответственно вызывает функцию setProgress. 
+	// Функция изменяет состояние прогрессбара.
+*/
+function updateProgress () {
+	// Полоса прогресса.
+	const pElement = document.querySelector('[data-progressbar]')
+	// Прогресс, зависит от количества отвеченных вопросов.
+	let progress = 0
+
+	if (data.question2) {
+		progress++
+	}
+
+	if (data.question3.length) {
+		progress++
+	}
+
+	if (data.question4) {
+		progress++
+	}
+
+	if (data.question5.name) {
+		progress++
+	}
+
+	if (data.question5.email) {
+		progress++
+	}
+
+	if (data.question5.confirm) {
+		progress++
+	}
+
+	// Если есть ответы на все вопросы:
+	if (progress === 6) {
+		pElement.classList.add("bg-success")
+	}
+
+	else {
+		pElement.classList.remove("bg-success")
+	}
+
+	progress = progress / 6 * 100
+
+	pElement.style.width = `${progress}%`
 }
