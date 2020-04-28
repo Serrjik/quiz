@@ -112,56 +112,38 @@ document
 		showCard(data.currentCardNumber)
 	})
 
-// Повесить обработчик клика на 5-ую карточку.
+// Повесить обработчик поднятия клавиши на поле ввода "Имя" 5-ой карточки.
 document
-	.querySelector('[data-card="5"]')
-	.addEventListener('click', event => {
-		// Чекбокс "согласен на обработку данных".
-		const checkElement = event.target.closest('.form-check')
-
-		// Если кликнули по чекбоксу "согласен на обработку данных":
-		if (checkElement) {
-			// <input> чекбокса "согласен на обработку данных".
-			const inputCheckElement = checkElement.querySelector('input')
-			// Запомнить ответ.
-			// Если чекбокс "согласен на обработку данных" включен:
-			if (data.question5.confirm === true) {
-				data.question5.confirm = false
-			}
-
-			// Если чекбокс "согласен на обработку данных" выключен:
-			else {
-				data.question5.confirm = true
-			}
-		}
-
+	.querySelector('[data-form-name]')
+	.addEventListener('keyup', function () {
+		// Запомнить ответ.
+		data.question5.name = this.value.trim()
 		// Перерисовать карточку.
 		showCard(data.currentCardNumber)
 	})
 
-/*
-	Повесить обработчик события input
-	(изменение значения) на 5-ую карточку.
+/* 
+	Повесить обработчик поднятия клавиши 
+	на поле ввода "Адрес электронной почты" 5-ой карточки. 
 */
 document
-	.querySelector('[data-card="5"]')
-	.addEventListener('input', event => {
-		console.log(event)
-		// Поле ввода, на котором сработало событие.
-		const input = event.target
-		
-		// Если это поле ввода "Имя":
-		if (input.type === "text") {
-			// Запомнить ответ.
-			data.question5.name = (input.value).trim()
-		}
+	.querySelector('[data-form-email]')
+	.addEventListener('keyup', function () {
+		// Запомнить ответ.
+		data.question5.email = this.value.trim()
+		// Перерисовать карточку.
+		showCard(data.currentCardNumber)
+	})
 
-		// Если это поле ввода "Адрес электронной почты":
-		else if (input.type === "email") {
-			// Запомнить ответ.
-			data.question5.email = (input.value).trim()
-		}
-
+/* 
+	Повесить обработчик клика на чекбокс 
+	"согласен на обработку данных" 5-ой карточки. 
+*/
+document
+	.querySelector('[data-form-confirm]')
+	.addEventListener('click', () => {
+		// Запомнить ответ.
+		data.question5.confirm = !data.question5.confirm
 		// Перерисовать карточку.
 		showCard(data.currentCardNumber)
 	})
@@ -194,7 +176,7 @@ function showCard (n) {
 	// Кнопка "Далее".
 	const nextButton = document.querySelector('[data-next]')
 	// Сделать кнопку "Далее" недоступной изначально.
-	nextButton.setAttribute('disabled', true)
+	nextButton.disabled = true
 
 	// Если отображается 2-я карточка:
 	if (n === 2) {
@@ -218,17 +200,6 @@ function showCard (n) {
 
 	// Если отображается 3-я карточка:
 	else if (n === 3) {
-		// cardElement
-			// Все карточки с ответами.
-			// .querySelectorAll('input')
-			// .forEach(inputElement => {
-				/*
-					Перерисовать <input>'ы чтобы их отображение
-					соответствовало их внутреннему состоянию checked.
-				*/
-				// inputElement.outerHTML = inputElement.outerHTML
-			// })
-
 		cardElement
 			// Все карточки с ответами.
 			.querySelectorAll('input')
@@ -283,17 +254,6 @@ function showCard (n) {
 
 	// Если отображается 5-я карточка:
 	else if (n === 5) {
-		// Поставить атрибут checked выбранному <input>'у.
-		inputCheckElement = cardElement.querySelector('.form-check > input')
-
-		if (data.question5.confirm === true) {
-			inputCheckElement.checked = true
-		}
-
-		else {
-			inputCheckElement.checked = false
-		}
-
 		// email address matching pattern
 		const pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i
 		let isEmailValid = false
@@ -303,10 +263,10 @@ function showCard (n) {
 			isEmailValid = true
 		}
 
-		// Если в карточке № 5 есть ответ:
+		// Если в карточке № 5 есть валидные ответы:
 		if (data.question5.name && isEmailValid && data.question5.confirm) {
 			// Сделать кнопку "Далее" доступной.
-			nextButton.removeAttribute('disabled')
+			nextButton.disabled = false
 		}
 	}
 }
