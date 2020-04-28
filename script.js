@@ -1,7 +1,9 @@
+// Основной скрипт, общие функции.
+
 // Информация о состоянии приложения.
 const data = {
 	// Номер карточки, которая должна отображаться.
-	currentCardNumber: 2,
+	currentCardNumber: 1,
 	// Ответы пользователя:
 	question2: null,
 	question3: [],
@@ -17,14 +19,10 @@ const data = {
 // При загрузке страницы показать выбранную карточку.
 showCard(data.currentCardNumber)
 
-// Повесить обработчик клика на кнопку "Начать".
-document
-	.querySelector('[data-start]')
-	.addEventListener('click', () => {
-		// Показать 2-ю карточку.
-		data.currentCardNumber = 2
-		showCard(2)
-	})
+// Кнопка "Далее".
+const nextButton = document.querySelector('[data-next]')
+// Сделать кнопку "Далее" недоступной изначально.
+nextButton.disabled = true
 
 // Повесить обработчик клика на кнопку "Назад".
 document
@@ -36,117 +34,11 @@ document
 	})
 
 // Повесить обработчик клика на кнопку "Далее".
-document
-	.querySelector('[data-next]')
-	.addEventListener('click', () => {
-		// Показать следующую карточку.
-		data.currentCardNumber++
-		showCard(data.currentCardNumber)
-	})
-
-// Повесить обработчик клика на 2-ую карточку.
-document
-	.querySelector('[data-card="2"]')
-	.addEventListener('click', event => {
-		// Ближайший родительский элемент <li> или сам <li>.
-		const liElement = event.target.closest('li')
-
-		// Если клик был не в области элемента <li>:
-		if (!liElement) {
-			return
-		}
-
-		// Если клик был в области элемента <li>:
-		// Найти дочерний <input>.
-		const inputElement = liElement.querySelector('input')
-		// Запомнить ответ.
-		data.question2 = inputElement.value
-
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
-
-// Повесить обработчик клика на 3-ую карточку.
-document
-	.querySelector('[data-card="3"]')
-	.addEventListener('click', event => {
-		// Выбранная карточка с вариантом ответа.
-		const sElement = event.target.closest('.card-selectable')
-
-		// Если кликнули не по карточке с ответом:
-		if (!sElement) {
-			return
-		}
-
-		// <input> выбранной карточки.
-		const inputElement = sElement.querySelector('input')
-		// Значение <input>'а выбранной карточки.
-		const value = inputElement.value
-
-		// Запомнить ответ.
-		toggleItem(data.question3, value)
-
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
-
-// Повесить обработчик клика на 4-ую карточку.
-document
-	.querySelector('[data-card="4"]')
-	.addEventListener('click', event => {
-		// Ближайший родительский элемент <li> или сам <li>.
-		const liElement = event.target.closest('li')
-
-		// Если клик был не в области элемента <li>:
-		if (!liElement) {
-			return
-		}
-
-		// Если клик был в области элемента <li>:
-		// Найти дочерний <input>.
-		const inputElement = liElement.querySelector('input')
-		// Запомнить ответ.
-		data.question4 = inputElement.value
-
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
-
-// Повесить обработчик поднятия клавиши на поле ввода "Имя" 5-ой карточки.
-document
-	.querySelector('[data-form-name]')
-	.addEventListener('keyup', function () {
-		// Запомнить ответ.
-		data.question5.name = this.value.trim()
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
-
-/* 
-	Повесить обработчик поднятия клавиши 
-	на поле ввода "Адрес электронной почты" 5-ой карточки. 
-*/
-document
-	.querySelector('[data-form-email]')
-	.addEventListener('keyup', function () {
-		// Запомнить ответ.
-		data.question5.email = this.value.trim()
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
-
-/* 
-	Повесить обработчик клика на чекбокс 
-	"согласен на обработку данных" 5-ой карточки. 
-*/
-document
-	.querySelector('[data-form-confirm]')
-	.addEventListener('click', () => {
-		// Запомнить ответ.
-		data.question5.confirm = !data.question5.confirm
-		// Перерисовать карточку.
-		showCard(data.currentCardNumber)
-	})
+nextButton.addEventListener('click', () => {
+	// Показать следующую карточку.
+	data.currentCardNumber++
+	showCard(data.currentCardNumber)
+})
 
 // Функция отображает карточку соответствующую переданному номеру.
 function showCard (n) {
@@ -175,101 +67,20 @@ function showCard (n) {
 	cardElement = document.querySelector(`[data-card="${n}"]`)
 	cardElement.style.display = ''
 
-	// Кнопка "Далее".
-	const nextButton = document.querySelector('[data-next]')
-	// Сделать кнопку "Далее" недоступной изначально.
-	nextButton.disabled = true
-
-	// Если отображается 2-я карточка:
-	if (n === 2) {
-		// Поставить атрибут checked выбранному <input>'у.
-		cardElement
-			.querySelectorAll('input')
-			.forEach(inputElement => {
-				inputElement.checked = false
-
-				if (inputElement.value === data.question2) {
-					inputElement.checked = true
-				}
-			})
-
-		// Если в карточке № 2 есть ответ:
-		if (data.question2) {
-			// Сделать кнопку "Далее" доступной.
-			nextButton.removeAttribute('disabled')
-		}
-	}
-
-	// Если отображается 3-я карточка:
-	else if (n === 3) {
-		cardElement
-			// Все карточки с ответами.
-			.querySelectorAll('input')
-			.forEach(inputElement => {
-				// Сделать все карточки с ответами невыбранными.
-				inputElement.removeAttribute('checked')
-
-				if (inputElement.checked) {
-					/*
-						Установить отображение <input>'а
-						соответственно его внутреннему состоянию.
-					*/
-					inputElement.checked = false
-				}
-
-				/*
-					Если содержимое текущей карточки
-					есть в массиве с ответами:
-				*/
-				if (data.question3.includes(inputElement.value)) {
-					// Сделать текущую карточку выбранной.
-					inputElement.checked = true
-				}
-			})
-
-		// Если в карточке № 3 есть ответ:
-		if (data.question3.length) {
-			// Сделать кнопку "Далее" доступной.
-			nextButton.removeAttribute('disabled')
-		}
-	}
-
-	// Если отображается 4-я карточка:
-	else if (n === 4) {
-		// Поставить атрибут checked выбранному <input>'у.
-		cardElement
-			.querySelectorAll('input')
-			.forEach(inputElement => {
-				inputElement.checked = false
-
-				if (inputElement.value === data.question4) {
-					inputElement.checked = true
-				}
-			})
-
-		// Если в карточке № 4 есть ответ:
-		if (data.question4) {
-			// Сделать кнопку "Далее" доступной.
-			nextButton.removeAttribute('disabled')
-		}
-	}
-
-	// Если отображается 5-я карточка:
-	else if (n === 5) {
-		// email address matching pattern
-		const pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i
-		let isEmailValid = false
-
-		// Проверка валидный ли email?
-		if ((data.question5.email).match(pattern) !== null) {
-			isEmailValid = true
-		}
-
-		// Если в карточке № 5 есть валидные ответы:
-		if (data.question5.name && isEmailValid && data.question5.confirm) {
-			// Сделать кнопку "Далее" доступной.
-			nextButton.disabled = false
-		}
+	// Вызов функции изменения состояния элементов на карточке.
+	switch (n) {
+		case 2:
+			showCard2()
+			break
+		case 3:
+			showCard3()
+			break
+		case 4:
+			showCard4()
+			break
+		case 5:
+			showCard5()
+			break
 	}
 }
 
@@ -304,7 +115,6 @@ function showHeader (n) {
 			header.innerHTML = ''
 			break
 	}
-
 	
 	header.style.display = ''
 }
@@ -373,6 +183,7 @@ function updateProgress () {
 		pElement.classList.add("bg-success")
 	}
 
+	// Если есть ответы НЕ на все вопросы:
 	else {
 		pElement.classList.remove("bg-success")
 	}
